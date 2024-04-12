@@ -1,30 +1,74 @@
 const response = await fetch("http://localhost:5678/api/works");
-const projetArchitecte = await response.json();
-console.log(projetArchitecte);
+const tousLesProjetArchitecte = await response.json();
+const tousButton = document.getElementById("tous");
 
-for (let i = 0; i < projetArchitecte.length; i++) {
-  //   <figure>
-  //     <img src="" alt="" />
-  //     <figcaption>Abajour Tahina</figcaption>
-  //   </figure>
+async function listeProjetArchitecte(projets) {
+  console.log("projets", projets);
 
-  const figureElement = document.createElement("figure");
+  for (let i = 0; i < projets.length; i++) {
+    //   <figure>
+    //     <img src="" alt="" />
+    //     <figcaption>Abajour Tahina</figcaption>
+    //   </figure>
 
-  let img = document.createElement("img");
-  img.src = projetArchitecte[i].imageUrl;
-  img.alt = projetArchitecte[i].title;
-  figureElement.appendChild(img);
+    const figureElement = document.createElement("figure");
 
-  let figcaption = document.createElement("figcaption");
-  figcaption.innerText = projetArchitecte[i].title;
-  figureElement.appendChild(figcaption);
+    let img = document.createElement("img");
+    img.src = projets[i].imageUrl;
+    img.alt = projets[i].title;
+    figureElement.appendChild(img);
 
-  document.querySelector(".gallery").appendChild(figureElement);
+    let figcaption = document.createElement("figcaption");
+    figcaption.innerText = projets[i].title;
+    figureElement.appendChild(figcaption);
+
+    document.querySelector(".gallery").appendChild(figureElement);
+  }
 }
 
-const tousButton = document.getElementById("tous");
-const objetsButton = document.getElementById("objets");
-const appartementsButton = document.getElementById("appartements");
-const hotelRestaurantsButton = document.getElementById("hotels-restaurants");
+// Afficher la fonction
+listeProjetArchitecte(tousLesProjetArchitecte);
 
-tousButton.addEventListener("click", () => console.log("click"));
+async function listeCategorie() {
+  const response = await fetch("http://localhost:5678/api/categories");
+  const categories = await response.json();
+  console.log("category", categories);
+
+  for (let i = 0; i < categories.length; i++) {
+    /* <button id="" class="button-filtre" type="button">Tous</button> */
+    let button = document.createElement("button");
+    button.id = categories[i].id;
+    button.className = "button-filtre";
+    button.type = "button";
+    button.innerText = categories[i].name;
+
+    document.querySelector(".liste-filtre").appendChild(button);
+
+    // ajouter addEventListener
+    button.addEventListener("click", () => {
+      const listeFiltrer = tousLesProjetArchitecte.filter(function (projet) {
+        return projet.categoryId === categories[i].id;
+      });
+
+      // vider la liste
+      document.querySelector(".gallery").innerHTML = "";
+
+      // ajouter à la liste
+      listeProjetArchitecte(listeFiltrer);
+
+      console.log(listeFiltrer);
+    });
+  }
+}
+
+// Afficher la fonction
+listeCategorie();
+
+// boutton filtré "Tous"
+tousButton.addEventListener("click", () => {
+  // vider la liste
+  document.querySelector(".gallery").innerHTML = "";
+
+  // ajouter à la liste
+  listeProjetArchitecte(tousLesProjetArchitecte);
+});
