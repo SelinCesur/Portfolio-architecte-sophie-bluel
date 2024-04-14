@@ -12,7 +12,7 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
-    <script type="module" src="projet.js"></script>
+    <script type="module" src="login.js"></script>
   </head>
   <body>
     <header>
@@ -28,26 +28,14 @@
     </header>
     <main class="page-login">
       <section><h2>Log In</h2></section>
-      <form>
+      <form class="formulaire-login">
         <fieldset>
           <label for="email">E-mail</label>
-          <input
-            type="email"
-            id="email"
-            pattern=".+@example\.com"
-            size="30"
-            required
-          />
+          <input type="email" name="email" id="email" size="30" required />
         </fieldset>
         <fieldset>
           <label for="pass">Mot de passe</label>
-          <input
-            type="password"
-            id="pass"
-            name="password"
-            minlength="8"
-            required
-          />
+          <input type="password" id="pass" name="password" required />
         </fieldset>
         <br />
         <button class="button-login" type="submit">Se connecter</button>
