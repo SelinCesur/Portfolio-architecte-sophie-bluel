@@ -13,11 +13,8 @@ const openModal = function (e) {
 
   modal.removeAttribute("aria-hidden");
   modal.setAttribute("aria-modal", "true");
-
   modal.addEventListener("click", closeModal);
-
   modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
-
   modal
     .querySelector(".js-modal-stop")
     .addEventListener("click", stopPropagation);
@@ -27,6 +24,11 @@ const closeModal = function (e) {
   if (modal === null) return;
   if (previouslyFocusedElement !== null) previouslyFocusedElement.focus();
   e.preventDefault();
+  window.setTimeout(function () {
+    modal.style.display = "none";
+    modal = null;
+  }, 500);
+
   modal.style.display = "none";
   modal.setAttribute("aria-hidden", "true");
   modal.removeAttribute("aria-modal");
@@ -39,8 +41,6 @@ const closeModal = function (e) {
   modal
     .querySelector(".js-modal-stop")
     .removeEventListener("click", stopPropagation);
-
-  modal = null;
 };
 const stopPropagation = function (e) {
   e.stopPropagation();
