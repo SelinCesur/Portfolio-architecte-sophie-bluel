@@ -52,6 +52,31 @@
       </section>
       <section id="portfolio">
         <h2>Mes Projets</h2>
+
+        <button><a href="#modal1" class="js-modal"> Modifier</a></button>
+
+        <aside
+          id="modal1"
+          class="modal"
+          aria-hidden="true"
+          role="dialog"
+          aria-labelledby="titlemodal"
+          aria-modal="false"
+          style="display: none"
+        >
+          <!-- Contenace de la boite blanche de la modale avec cette div -->
+
+          <div class="modal-wrapper js-modal-stop">
+            <button class="js-modal-close">Fermer la boite modal</button>
+            <h3 id="titlemodal">Galerie Photo</h3>
+
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum esse
+            vitae a quia, pariatur asperiores eius. Inventore, veniam molestiae
+            eligendi illo id, atque ipsam earum ratione recusandae repellat quos
+            esse.
+          </div>
+        </aside>
+
         <!-- filtres -->
         <div class="liste-filtre">
           <button id="tous" class="button-filtre" type="button">Tous</button>
@@ -81,5 +106,6 @@
         </ul>
       </nav>
     </footer>
+    <script src="app.js"></script>
   </body>
 </html>
