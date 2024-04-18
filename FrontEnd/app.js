@@ -11,10 +11,15 @@ const openModal = function (e) {
   modal.style.display = null;
   focusables[0].focus();
 
+  console.log(modal);
+
   modal.removeAttribute("aria-hidden");
   modal.setAttribute("aria-modal", "true");
+
   modal.addEventListener("click", closeModal);
+
   modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
+
   modal
     .querySelector(".js-modal-stop")
     .addEventListener("click", stopPropagation);

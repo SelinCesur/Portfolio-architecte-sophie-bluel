@@ -26,8 +26,34 @@ async function listeProjetArchitecte(projets) {
   }
 }
 
+async function listeProjetArchitecteModale(projets) {
+  console.log("projets", projets);
+
+  for (let i = 0; i < projets.length; i++) {
+    //   <figure>
+    //     <img src="" alt="" />
+    //     <figcaption>Abajour Tahina</figcaption>
+    //   </figure>
+
+    const figureElement = document.createElement("figure");
+
+    let img = document.createElement("img");
+    img.src = projets[i].imageUrl;
+    img.alt = projets[i].title;
+    figureElement.appendChild(img);
+
+    let figcaption = document.createElement("figcaption");
+    figcaption.innerText = projets[i].title;
+    figureElement.appendChild(figcaption);
+
+    document.querySelector(".gallery-modal").appendChild(figureElement);
+  }
+}
+
 // Afficher la fonction
 listeProjetArchitecte(tousLesProjetArchitecte);
+// Ajouter dans la modale
+listeProjetArchitecteModale(tousLesProjetArchitecte);
 
 async function listeCategorie() {
   const response = await fetch("http://localhost:5678/api/categories");

@@ -387,13 +387,17 @@ body {
 .modal-wrapper {
   overflow: auto;
 
-  width: 600px;
+  width: 630px;
+  height: 688px;
   max-width: calc(100vw - 20px);
   max-height: calc(100vw - 20px);
 
-  padding: 20px;
   background-color: #ffffff;
   animation: slideFromTop 0.3s both;
+  padding-left: 105px;
+  padding-top: 60px;
+  padding-right: 105px;
+  border-radius: 10px;
 }
 
 .modal[aria-hidden="true"] {
@@ -404,20 +408,22 @@ body {
   animation-name: slideToBottom;
 }
 
-@keyframes fadeIn 
-from {
-  opacity: 0;
-}
-to {
-  opacity: 1;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-@keyframes fadeOut 
-from {
-  opacity: 1;
-}
-to {
-  opacity: 0;
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes slideFromTop {
@@ -436,4 +442,44 @@ to {
 }
 to {
   transform: translateY(50px);
+}
+
+/* style gallery dans modale */
+
+.modal-wrapper .gallery-modal {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 9px;
+  grid-row-gap: 29px;
+  border-bottom: 1px solid #b3b3b3;
+  padding-bottom: 67.3px;
+}
+
+.modal-wrapper .gallery-modal img {
+  width: 100%;
+}
+
+.modal-wrapper .gallery-modal figure figcaption {
+  display: none;
+}
+
+#titlemodal {
+  font-size: 26px;
+  font-family: "Work Sans";
+
+  padding-bottom: 46px;
+  display: flex;
+  justify-content: center;
+}
+
+.ajouter {
+  font-family: "Syne";
+  font-weight: 700;
+  color: white;
+  background-color: #1d6154;
+
+  width: 237px;
+  text-align: center;
+  border-radius: 60px;
 }
