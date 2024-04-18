@@ -1,13 +1,19 @@
 let modal = null;
+const focusableSelector = "button, a, input, textarea";
+let focusables = [];
+let previouslyFocusedElement = null;
 
 const openModal = function (e) {
   e.preventDefault();
-  const target = document.querySelector(e.target.getAttribute("href"));
+  modal = document.querySelector(e.target.getAttribute("href"));
+  focusables = Array.from(modal.querySelectorAll(focusableSelector));
+  previouslyFocusedElement = document.querySelector(":focus");
+  modal.style.display = null;
+  focusables[0].focus();
 
-  target.style.display = null;
-  target.removeAttribute("aria-hidden");
-  target.setAttribute("aria-modal", "true");
-  modal = target;
+  modal.removeAttribute("aria-hidden");
+  modal.setAttribute("aria-modal", "true");
+
   modal.addEventListener("click", closeModal);
 
   modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
@@ -19,6 +25,7 @@ const openModal = function (e) {
 
 const closeModal = function (e) {
   if (modal === null) return;
+  if (previouslyFocusedElement !== null) previouslyFocusedElement.focus();
   e.preventDefault();
   modal.style.display = "none";
   modal.setAttribute("aria-hidden", "true");
@@ -39,6 +46,23 @@ const stopPropagation = function (e) {
   e.stopPropagation();
 };
 
+const focusInModal = function (e) {
+  e.preventDefault();
+  let index = focusables.findIndex((f) => f === modal.querySelector(":focus"));
+  if (e.shiftKey === true) {
+    index--;
+  } else {
+    index++;
+  }
+  if (index >= focusables.length) {
+    index = 0;
+  }
+  if (index < 0) {
+    index = focusables.lengt - 1;
+  }
+  focusables[index].focus();
+};
+
 document.querySelectorAll(".js-modal").forEach((a) => {
   a.addEventListener("click", openModal);
 });
@@ -46,5 +70,8 @@ document.querySelectorAll(".js-modal").forEach((a) => {
 window.addEventListener("keydown", function (e) {
   if (e.key === "Escape" || e.key === "Esc") {
     closeModal(e);
+  }
+  if (e.key === "Tab" && modal !== null) {
+    this.focusInModal(e);
   }
 });
