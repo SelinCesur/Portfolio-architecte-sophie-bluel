@@ -26,6 +26,8 @@ const openModal = function (e) {
 };
 
 const closeModal = function (e) {
+  console.log(modal);
+
   if (modal === null) return;
   if (previouslyFocusedElement !== null) previouslyFocusedElement.focus();
   e.preventDefault();
@@ -33,6 +35,8 @@ const closeModal = function (e) {
     modal.style.display = "none";
     modal = null;
   }, 500);
+
+  console.log(modal);
 
   modal.style.display = "none";
   modal.setAttribute("aria-hidden", "true");
@@ -47,6 +51,7 @@ const closeModal = function (e) {
     .querySelector(".js-modal-stop")
     .removeEventListener("click", stopPropagation);
 };
+
 const stopPropagation = function (e) {
   e.stopPropagation();
 };

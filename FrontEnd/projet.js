@@ -46,6 +46,14 @@ async function listeProjetArchitecteModale(projets) {
     figcaption.innerText = projets[i].title;
     figureElement.appendChild(figcaption);
 
+    let boutonPoubelle = document.createElement("button");
+    boutonPoubelle.className = "bouton-poubelle";
+    let imgPoubelle = document.createElement("img");
+    imgPoubelle.src = "./assets/images/trash-can-solid.svg";
+    imgPoubelle.alt = "bouton-poubelle";
+    boutonPoubelle.appendChild(imgPoubelle);
+    figureElement.appendChild(boutonPoubelle);
+
     document.querySelector(".gallery-modal").appendChild(figureElement);
   }
 }

@@ -51,11 +51,20 @@
         </article>
       </section>
       <section id="portfolio">
-        <h2>Mes Projets</h2>
+        <section class="portfolio-titre">
+          <h2>Mes Projets</h2>
 
-        <button><a href="#modal1" class="js-modal"> Modifier</a>
-        
-        </button>
+          <a href="#modal1" class="js-modal modifier">
+            <img
+              src="./assets/images/pen-to-square-regular.svg"
+              alt="modifier"
+              width="15.58"
+              height="15.58"
+            />
+
+            modifier</a
+          >
+        </section>
 
         <aside
           id="modal1"
@@ -69,36 +78,73 @@
           <!-- Contenace de la boite blanche de la modale avec cette div -->
 
           <div class="modal-wrapper js-modal-stop">
-            <button class="js-modal-close"><img src="./assets/images/xmark-solid.svg" alt=" Fermer la modale" /></button>
-            
+            <button class="js-modal-close close">
+              <img
+                src="./assets/images/xmark-solid.svg"
+                alt=" Fermer la modale"
+                width="24"
+                height="24"
+              />
+            </button>
+
             <h3 id="titlemodal">Galerie Photo</h3>
 
             <div class="gallery-modal"></div>
-
-            <button><a href="#modal2" class="js-modal   ajouter">Ajouter une photo </button>
-
-              
+            <div class="ajouter-parent">
+              <button>
+                <a href="#modal2" class="js-modal ajouter"
+                  >Ajouter une photo
+                </a>
+              </button>
+            </div>
           </div>
         </aside>
 
         <aside
-        id="modal2"
-        class="modal"
-        aria-hidden="true"
-        role="dialog"
-        aria-labelledby="titlemodal"
-        aria-modal="false"
-        style="display: none"
-      >
-     
+          id="modal2"
+          class="modal"
+          aria-hidden="true"
+          role="dialog"
+          aria-labelledby="titlemodal"
+          aria-modal="false"
+          style="display: none"
+        >
+          <div class="modal-wrapper js-modal-stop">
+            <button class="js-modal-close close">
+              <img
+                src="./assets/images/xmark-solid.svg"
+                alt=" Fermer la modale"
+                width="24"
+                height="24"
+              />
+            </button>
 
-        <div class="modal-wrapper js-modal-stop">
-          <button class="js-modal-close"><img src="./assets/images/xmark-solid.svg" alt=" Fermer la modale" /></button>
-          caca
+            <h3 id="titlemodal">Ajout photo</h3>
 
-            
-        </div>
-      </aside>
+            <form class="formulaire-ajout-photo">
+              <fieldset>
+                <label for="title">Titre</label>
+                <input
+                  type="title"
+                  name="title"
+                  id="title"
+                  size="30"
+                  required
+                />
+
+                <label for="categorie">Catégorie</label><br />
+                <select name="categorie" id="categorie">
+                  <option value="tous">Tous</option>
+                  <option value="objets">Objets</option>
+                  <option value="appartements">Appartements</option>
+                  <option value="hôtel-restaurants">Hotêl & restaurants</option>
+                </select>
+              </fieldset>
+            </form>
+          </div>
+
+          <button><a href="" class="valider">Valider </a></button>
+        </aside>
 
         <!-- filtres -->
         <div class="liste-filtre">

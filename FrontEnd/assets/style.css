@@ -203,7 +203,6 @@ li:hover {
 }
 #portfolio h2 {
   text-align: center;
-  margin-bottom: 1em;
 }
 
 /**   Filtre **/
@@ -358,17 +357,25 @@ footer nav ul {
 
 /** Modale **/
 
-body {
+.portfolio-titre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 31px;
+
+  margin-bottom: 1em;
+}
+
+/* body {
   margin: 0;
   padding: 0;
-}
+} */
 
 * {
   box-sizing: border-box;
-}
 
-*:focus {
-  box-shadow: 0 0 10px blue;
+  border: none;
 }
 
 .modal {
@@ -385,6 +392,9 @@ body {
 }
 
 .modal-wrapper {
+  /* position au milieu de la page */
+  position: absolute;
+
   overflow: auto;
 
   width: 630px;
@@ -454,6 +464,7 @@ to {
   grid-row-gap: 29px;
   border-bottom: 1px solid #b3b3b3;
   padding-bottom: 67.3px;
+  margin-bottom: 48px;
 }
 
 .modal-wrapper .gallery-modal img {
@@ -464,6 +475,19 @@ to {
   display: none;
 }
 
+.modal-wrapper .gallery-modal figure {
+  position: relative;
+}
+
+.modal-wrapper .gallery-modal figure .bouton-poubelle {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+
+  background-color: #000000;
+  border-radius: 2px;
+}
+
 #titlemodal {
   font-size: 26px;
   font-family: "Work Sans";
@@ -472,14 +496,64 @@ to {
   display: flex;
   justify-content: center;
 }
-
-.ajouter {
+.gallery-modal button {
+  background-color: #b1663c;
+}
+.ajouter-parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button a.ajouter {
   font-family: "Syne";
   font-weight: 700;
   color: white;
   background-color: #1d6154;
 
-  width: 237px;
-  text-align: center;
   border-radius: 60px;
+  padding: 10px 49px 9px 49px;
+}
+button {
+  border: none;
+  background-color: transparent; /*ne pas mettre none mais transparent*/
+}
+
+button.close {
+  border: none;
+  background-color: white;
+  position: absolute;
+  right: 30px;
+  top: 26px;
+}
+
+a.modifier {
+  font-size: 14px;
+  font-family: "Work Sans";
+  font-weight: 400;
+  color: black;
+}
+#title {
+  width: 420px;
+  height: 51px;
+
+  gap: 0px;
+  opacity: 0px;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+  margin-bottom: 21px;
+  margin-top: 10px;
+}
+
+#categorie {
+  width: 420px;
+  height: 51px;
+
+  gap: 0px;
+  opacity: 0px;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+  margin-top: 10px;
+  margin-bottom: 47px;
+}
+
+.formulaire-ajout-photo fieldset {
+  border-bottom: 1px solid #b3b3b3;
 }
