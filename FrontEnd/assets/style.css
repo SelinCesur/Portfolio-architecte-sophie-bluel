@@ -545,6 +545,7 @@ a.modifier {
   box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
   margin-bottom: 21px;
   margin-top: 10px;
+  padding-left: 16px;
 }
 
 #categorie {
@@ -556,6 +557,7 @@ a.modifier {
   box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
   margin-top: 10px;
   margin-bottom: 47px;
+  padding-left: 16px;
 }
 
 .formulaire-ajout-photo fieldset {
@@ -566,6 +568,9 @@ a.modifier {
   background-color: #a7a7a7;
   border-radius: 60px;
   padding: 10px 49px 9px 49px;
+  margin-top: 32px;
+  width: 237px;
+  height: 36px;
 }
 
 .valider a {
@@ -577,4 +582,40 @@ a.modifier {
 #vue-1,
 #vue-2 {
   margin: 0;
+}
+
+.ajout-photo {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  background-color: #e8f1f6;
+  width: 420px;
+  height: 169px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+.ajout-photo img {
+  margin-top: 22.5px;
+}
+.boutton-ajouter-photo {
+  width: 173px;
+  height: 36px;
+
+  border-radius: 50px;
+  background-color: #cbd6dc;
+  margin-top: 6px;
+}
+a.ajouter-photo {
+  color: #306685;
+}
+
+.ajout-photo p {
+  font-family: Work Sans;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 11.73px;
+  text-align: center;
+  padding-top: 7px;
 }
