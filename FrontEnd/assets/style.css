@@ -310,6 +310,10 @@ footer nav ul {
 
   padding-bottom: 20px;
 }
+/* enlever les <a> souligner */
+a {
+  text-decoration: none !important;
+}
 
 /** Page login **/
 .page-login,
@@ -499,7 +503,7 @@ to {
 .gallery-modal button {
   background-color: #b1663c;
 }
-.ajouter-parent {
+.centrer-bouton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -556,4 +560,21 @@ a.modifier {
 
 .formulaire-ajout-photo fieldset {
   border-bottom: 1px solid #b3b3b3;
+}
+
+.valider {
+  background-color: #a7a7a7;
+  border-radius: 60px;
+  padding: 10px 49px 9px 49px;
+}
+
+.valider a {
+  font-family: "Syne";
+  font-weight: 700;
+  color: white;
+}
+
+#vue-1,
+#vue-2 {
+  margin: 0;
 }

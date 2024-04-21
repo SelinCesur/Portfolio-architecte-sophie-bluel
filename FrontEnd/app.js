@@ -1,3 +1,4 @@
+// code pour la modale
 let modal = null;
 const focusableSelector = "button, a, input, textarea";
 let focusables = [];
@@ -50,6 +51,10 @@ const closeModal = function (e) {
   modal
     .querySelector(".js-modal-stop")
     .removeEventListener("click", stopPropagation);
+
+  // remettre à zéro les vue dans la modale
+  document.querySelector("#vue-1").style = "display:block";
+  document.querySelector("#vue-2").style = "display:none";
 };
 
 const stopPropagation = function (e) {
@@ -84,4 +89,22 @@ window.addEventListener("keydown", function (e) {
   if (e.key === "Tab" && modal !== null) {
     this.focusInModal(e);
   }
+});
+
+//code pour les bouton ajouter et valider dans les modales
+
+const boutonModal = function (e) {
+  e.preventDefault();
+
+  sectionSuivante = document.querySelector(e.target.getAttribute("href"));
+
+  sectionSuivante.style = "display:block";
+
+  if (e.target.getAttribute("href") === "#vue-2") {
+    document.querySelector("#vue-1").style = "display:none";
+  }
+};
+
+document.querySelectorAll(".bouton-modal").forEach((a) => {
+  a.addEventListener("click", boutonModal);
 });

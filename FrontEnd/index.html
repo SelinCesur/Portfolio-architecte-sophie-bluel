@@ -87,63 +87,54 @@
               />
             </button>
 
-            <h3 id="titlemodal">Galerie Photo</h3>
+            <!-- première vue de ma modale -->
+            <section id="vue-1">
+              <h3 id="titlemodal">Galerie Photo</h3>
 
-            <div class="gallery-modal"></div>
-            <div class="ajouter-parent">
-              <button>
-                <a href="#modal2" class="js-modal ajouter"
-                  >Ajouter une photo
-                </a>
-              </button>
-            </div>
+              <div class="gallery-modal"></div>
+              <div class="centrer-bouton">
+                <button>
+                  <a href="#vue-2" class="ajouter bouton-modal"
+                    >Ajouter une photo
+                  </a>
+                </button>
+              </div>
+            </section>
+
+            <!-- deuxième vue de ma modale -->
+            <!-- masqué dès le début -->
+            <section id="vue-2" style="display: none">
+              <h3 id="titlemodal">Ajout photo</h3>
+
+              <form class="formulaire-ajout-photo">
+                <fieldset>
+                  <label for="title">Titre</label>
+                  <input
+                    type="title"
+                    name="title"
+                    id="title"
+                    size="30"
+                    required
+                  />
+
+                  <label for="categorie">Catégorie</label><br />
+                  <select name="categorie" id="categorie">
+                    <option value="tous">Tous</option>
+                    <option value="objets">Objets</option>
+                    <option value="appartements">Appartements</option>
+                    <option value="hôtel-restaurants">
+                      Hotêl & restaurants
+                    </option>
+                  </select>
+                </fieldset>
+              </form>
+              <div class="centrer-bouton">
+                <button class="valider">
+                  <a href="#bouton-valider" class="bouton-modal">Valider </a>
+                </button>
+              </div>
+            </section>
           </div>
-        </aside>
-
-        <aside
-          id="modal2"
-          class="modal"
-          aria-hidden="true"
-          role="dialog"
-          aria-labelledby="titlemodal"
-          aria-modal="false"
-          style="display: none"
-        >
-          <div class="modal-wrapper js-modal-stop">
-            <button class="js-modal-close close">
-              <img
-                src="./assets/images/xmark-solid.svg"
-                alt=" Fermer la modale"
-                width="24"
-                height="24"
-              />
-            </button>
-
-            <h3 id="titlemodal">Ajout photo</h3>
-
-            <form class="formulaire-ajout-photo">
-              <fieldset>
-                <label for="title">Titre</label>
-                <input
-                  type="title"
-                  name="title"
-                  id="title"
-                  size="30"
-                  required
-                />
-
-                <label for="categorie">Catégorie</label><br />
-                <select name="categorie" id="categorie">
-                  <option value="tous">Tous</option>
-                  <option value="objets">Objets</option>
-                  <option value="appartements">Appartements</option>
-                  <option value="hôtel-restaurants">Hotêl & restaurants</option>
-                </select>
-              </fieldset>
-            </form>
-          </div>
-
-          <button><a href="" class="valider">Valider </a></button>
         </aside>
 
         <!-- filtres -->
