@@ -14,17 +14,35 @@
     <link rel="stylesheet" href="./assets/style.css" />
     <script type="module" src="projet.js"></script>
   </head>
+
   <body>
     <header>
-      <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-      <nav>
-        <ul>
-          <li>projets</li>
-          <li>contact</li>
-          <li><a href="./login.html">login</a></li>
-          <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
-        </ul>
-      </nav>
+      <section id="mode-edition">
+        <a>
+          <img
+            src="./assets/images/pen-to-square-regular.svg"
+            alt="modifier"
+            width="15.58"
+            height="15.58"
+          />
+
+          mode édition</a
+        >
+      </section>
+
+      <section id="titre-et-navigation">
+        <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+
+        <nav>
+          <ul>
+            <li>projets</li>
+            <li>contact</li>
+            <li id="login"><a href="./login.html">login</a></li>
+            <li id="logout" style="display: none">logout</li>
+            <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+          </ul>
+        </nav>
+      </section>
     </header>
     <main>
       <section id="introduction">
@@ -173,7 +191,6 @@
         </form>
       </section>
     </main>
-
     <footer>
       <nav>
         <ul>

@@ -55,5 +55,13 @@ function ajoutListenerEnvoyerFormulaire() {
   });
 }
 
+function jeSuisConnecte() {
+  const userId = window.localStorage.getItem("userId");
+  const token = window.localStorage.getItem("token");
+
+  console.log(userId, token);
+}
+
 // ajout de l'addeventlistener
 ajoutListenerEnvoyerFormulaire();
+jeSuisConnecte();

@@ -129,12 +129,16 @@ table {
 }
 /** end reset css**/
 body {
-  max-width: 1140px;
-  margin: auto;
   font-family: "Work Sans";
   font-size: 14px;
   background: #fffef8;
 }
+
+main {
+  max-width: 1140px;
+  margin: auto;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -298,11 +302,12 @@ footer {
   height: 60px;
   background-color: #ffffff;
   margin-top: 355px;
+  padding: 0 60px;
 }
 footer nav ul {
   display: flex;
   justify-content: flex-end;
-  margin: 2em;
+  /* margin: 2em; */
   size: 14px;
   font-weight: 300;
 
@@ -618,4 +623,39 @@ a.ajouter-photo {
   line-height: 11.73px;
   text-align: center;
   padding-top: 7px;
+}
+
+/* mode edition */
+
+header {
+  display: inline;
+}
+
+header section {
+  margin: 0;
+}
+
+#mode-edition {
+  display: block;
+  width: 100%;
+
+  padding: 20px 0;
+  margin-top: 0;
+
+  color: #ffffff;
+  background-color: #000000;
+
+  text-align: center;
+}
+
+#mode-edition img {
+  filter: invert(); /* inverse la couleur de noir à blanc */
+}
+
+#titre-et-navigation {
+  display: flex;
+  justify-content: space-between;
+
+  max-width: 1140px;
+  margin: 50px auto;
 }

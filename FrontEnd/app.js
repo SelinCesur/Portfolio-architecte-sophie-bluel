@@ -91,8 +91,7 @@ window.addEventListener("keydown", function (e) {
   }
 });
 
-//code pour les bouton ajouter et valider dans les modales
-
+// code pour les boutons ajouter et valider dans les modales
 const boutonModal = function (e) {
   e.preventDefault();
 
@@ -108,3 +107,22 @@ const boutonModal = function (e) {
 document.querySelectorAll(".bouton-modal").forEach((a) => {
   a.addEventListener("click", boutonModal);
 });
+
+// code qui vérifie si je suis bien connecté
+function jeSuisConnecte() {
+  const userId = window.localStorage.getItem("userId");
+  const token = window.localStorage.getItem("token");
+
+  // si j'ai bien userId et le token c'est que je suis bien connecté, sinon non
+  console.log(userId, token);
+  if (userId && token) {
+    document.getElementById("logout").style = "display:block";
+    document.getElementById("login").style = "display:none";
+  } else {
+    document.getElementById("logout").style = "display:none";
+    document.getElementById("login").style = "display:block";
+  }
+}
+
+// je vérifie si je suis connecté
+jeSuisConnecte();
