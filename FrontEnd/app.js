@@ -116,11 +116,21 @@ function jeSuisConnecte() {
   // si j'ai bien userId et le token c'est que je suis bien connecté, sinon non
   console.log(userId, token);
   if (userId && token) {
+    // afficher les boutons de navigation
     document.getElementById("logout").style = "display:block";
     document.getElementById("login").style = "display:none";
+
+    // afficher le mode edition et le bouton de modification
+    document.getElementById("mode-edition").style = "display:block";
+    document.getElementById("boutton-modifier").style = "display:block";
   } else {
+    // afficher les boutons de navigation
     document.getElementById("logout").style = "display:none";
     document.getElementById("login").style = "display:block";
+
+    // masquer le mode edition et le bouton de modification
+    document.getElementById("mode-edition").style = "display:none";
+    document.getElementById("boutton-modifier").style = "display:none";
   }
 }
 
