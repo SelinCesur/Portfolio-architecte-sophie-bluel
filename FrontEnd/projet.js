@@ -1,5 +1,7 @@
 const response = await fetch("http://localhost:5678/api/works");
-const tousLesProjetArchitecte = await response.json();
+
+// j'ai changé la constante en variable pour pouvoir modifier la liste en fonction des ajouts et des suppressions
+let tousLesProjetArchitecte = await response.json();
 const tousButton = document.getElementById("tous");
 
 async function listeProjetArchitecte(projets) {
@@ -37,15 +39,18 @@ async function listeProjetArchitecteModale(projets) {
 
     const figureElement = document.createElement("figure");
 
+    // image projet
     let img = document.createElement("img");
     img.src = projets[i].imageUrl;
     img.alt = projets[i].title;
     figureElement.appendChild(img);
 
+    // figcaption projet
     let figcaption = document.createElement("figcaption");
     figcaption.innerText = projets[i].title;
     figureElement.appendChild(figcaption);
 
+    // bouton supprimer et image poubelle
     let boutonPoubelle = document.createElement("button");
     boutonPoubelle.className = "bouton-poubelle";
     let imgPoubelle = document.createElement("img");
@@ -55,6 +60,11 @@ async function listeProjetArchitecteModale(projets) {
     figureElement.appendChild(boutonPoubelle);
 
     document.querySelector(".gallery-modal").appendChild(figureElement);
+
+    boutonPoubelle.addEventListener("click", function (event) {
+      event.preventDefault();
+      supprimerUnProjet(projets[i].id);
+    });
   }
 }
 
@@ -106,3 +116,42 @@ tousButton.addEventListener("click", () => {
   // ajouter à la liste
   listeProjetArchitecte(tousLesProjetArchitecte);
 });
+
+// code pour supprimer un projet
+function supprimerUnProjet(projetId) {
+  console.log("je supprime l'image", projetId);
+
+  console.log(localStorage.getItem("token"));
+
+  fetch("http://localhost:5678/api/works/" + projetId, {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  }).then((resultat) => {
+    console.log(resultat);
+    // si le status est un 204 = réussie
+    if (resultat.status === 204) {
+      // j'enlève le projet supprimer
+      tousLesProjetArchitecte = tousLesProjetArchitecte.filter(function (
+        projet
+      ) {
+        return projet.id !== projetId;
+      });
+
+      console.log(tousLesProjetArchitecte);
+
+      // je relance l'affichage
+      // vider la liste dans gallery
+      document.querySelector(".gallery").innerHTML = "";
+
+      // vider la liste dans gallery-modal
+      document.querySelector(".gallery-modal").innerHTML = "";
+
+      // Afficher la fonction
+      listeProjetArchitecte(tousLesProjetArchitecte);
+      // Ajouter dans la modale
+      listeProjetArchitecteModale(tousLesProjetArchitecte);
+    }
+  });
+}
