@@ -164,3 +164,41 @@ function supprimerUnProjet(projetId) {
     }
   });
 }
+
+function ajouterUnNouveauProjet(image, titre, categorie) {
+  // je mets la formulaire au format FormData
+  const formData = new FormData();
+  formData.append("image", image, image.name);
+  formData.append("title", titre);
+  formData.append("category", categorie);
+
+  fetch("http://localhost:5678/api/works/", {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+    body: formData,
+  }).then((resultat) => {
+    console.log(resultat);
+
+    // si le status est un 201 = réussie
+    if (resultat.status === 201) {
+      alert("Le projet a été ajouté ! Il faut recharger la page.");
+    }
+  });
+}
+
+// je submit mon formulaire
+document
+  .getElementById("formulaire-ajout-photo")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (document.getElementById("formulaire-ajout-photo").checkValidity()) {
+      const image = e.target[1].files[0];
+      const titre = e.target[2].value;
+      const categorie = e.target[3].value;
+
+      ajouterUnNouveauProjet(image, titre, categorie);
+    }
+  });

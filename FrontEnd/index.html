@@ -137,15 +137,23 @@
                   height="59.62"
                 />
                 <button class="boutton-ajouter-photo">
-                  <a href="Ajouter-photo" class="ajouter-photo"
+                  <a href="#ajouter-image" class="ajouter-photo"
                     >+ Ajouter photo</a
                   >
                 </button>
                 <p>jpn, png : 4mo max</p>
               </div>
 
-              <form class="formulaire-ajout-photo">
+              <form id="formulaire-ajout-photo">
                 <fieldset>
+                  <input
+                    type="file"
+                    id="imageFile"
+                    accept="image/png, image/jpeg"
+                    required
+                    name="image"
+                  />
+
                   <label for="title">Titre</label>
                   <input
                     type="title"
@@ -155,15 +163,16 @@
                     required
                   />
 
-                  <label for="categorie">Catégorie</label><br />
-                  <select name="categorie" id="categorie"></select>
+                  <label for="categorie">Catégorie</label>
+                  <br />
+                  <select name="categorie" id="categorie" required></select>
                 </fieldset>
+                <div class="centrer-bouton">
+                  <button type="submit" class="bouton-modal-formulaire">
+                    Valider
+                  </button>
+                </div>
               </form>
-              <div class="centrer-bouton">
-                <button class="valider">
-                  <a href="#bouton-valider" class="bouton-modal">Valider </a>
-                </button>
-              </div>
             </section>
           </div>
         </aside>

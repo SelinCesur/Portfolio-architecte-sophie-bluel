@@ -136,3 +136,60 @@ function jeSuisConnecte() {
 
 // je vérifie si je suis connecté
 jeSuisConnecte();
+
+// formulaire d'ajout de photo
+document.querySelector(".ajout-photo").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  document.getElementById("imageFile").click();
+});
+
+// on charge la photo dans la balise image
+// commentaire de la maquette https://developer.mozilla.org/fr/docs/Web/API/FileReader/readAsDataURL
+document.getElementById("imageFile").addEventListener("change", function (e) {
+  const file = e.target.files[0];
+  console.log(file);
+
+  if (file.size < 4194304) {
+    alert("L'image est trop lourd, il doit être inférieur à 4mo max");
+  } else {
+    const preview = document.createElement("img");
+    preview.className = "ajout-photo-image";
+
+    const reader = new FileReader();
+
+    reader.addEventListener(
+      "load",
+      () => {
+        // on convertit l'image en une chaîne de caractères base64
+        preview.src = reader.result;
+      },
+      false
+    );
+
+    if (file) {
+      reader.readAsDataURL(file);
+
+      // supprime les éléments dans ajout-photo
+      document.querySelector(".ajout-photo").innerHTML = "";
+
+      // ensuite je remplace par l'image
+      document.querySelector(".ajout-photo").appendChild(preview);
+    }
+  }
+});
+
+// je vérifie si le formulaire est valide et je change la couleur du bouton
+document
+  .getElementById("formulaire-ajout-photo")
+  .addEventListener("change", function (e) {
+    e.preventDefault();
+
+    if (document.getElementById("formulaire-ajout-photo").checkValidity()) {
+      document.querySelector(".bouton-modal-formulaire").className =
+        "bouton-modal-formulaire valider";
+    } else {
+      document.querySelector(".bouton-modal-formulaire").className =
+        "bouton-modal-formulaire";
+    }
+  });
