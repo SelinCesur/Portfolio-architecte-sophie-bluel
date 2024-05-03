@@ -165,27 +165,44 @@ function supprimerUnProjet(projetId) {
   });
 }
 
-function ajouterUnNouveauProjet(image, titre, categorie) {
+async function ajouterUnNouveauProjet(image, titre, categorie) {
   // je mets la formulaire au format FormData
   const formData = new FormData();
   formData.append("image", image, image.name);
   formData.append("title", titre);
   formData.append("category", categorie);
 
-  fetch("http://localhost:5678/api/works/", {
+  const response = await fetch("http://localhost:5678/api/works/", {
     method: "POST",
     headers: {
       Authorization: "Bearer " + localStorage.getItem("token"),
     },
     body: formData,
-  }).then((resultat) => {
-    console.log(resultat);
-
-    // si le status est un 201 = réussie
-    if (resultat.status === 201) {
-      alert("Le projet a été ajouté ! Il faut recharger la page.");
-    }
   });
+
+  let monNouveauProjet = await response.json();
+
+  console.log(monNouveauProjet);
+
+  if (monNouveauProjet !== null) {
+    // j'ajoute mon nouveau projet dans la liste de tous les projets
+    tousLesProjetArchitecte.push(monNouveauProjet);
+
+    // je relance l'affichage
+    // vider la liste dans gallery
+    document.querySelector(".gallery").innerHTML = "";
+
+    // vider la liste dans gallery-modal
+    document.querySelector(".gallery-modal").innerHTML = "";
+
+    // Afficher la fonction
+    listeProjetArchitecte(tousLesProjetArchitecte);
+    // Ajouter dans la modale
+    listeProjetArchitecteModale(tousLesProjetArchitecte);
+
+    // je ferme la modale
+    document.querySelector(".js-modal-close").click();
+  }
 }
 
 // je submit mon formulaire
@@ -194,6 +211,7 @@ document
   .addEventListener("submit", function (e) {
     e.preventDefault();
 
+    // je vérifie que le formulaire est valider
     if (document.getElementById("formulaire-ajout-photo").checkValidity()) {
       const image = e.target[1].files[0];
       const titre = e.target[2].value;
