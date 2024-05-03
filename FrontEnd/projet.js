@@ -86,7 +86,16 @@ async function listeCategorie() {
     button.type = "button";
     button.innerText = categories[i].name;
 
+    // <option value="tous">Tous</option>
+    let option = document.createElement("option");
+    option.value = categories[i].id;
+    option.innerText = categories[i].name;
+
+    // ajout des catégorie boutton
     document.querySelector(".liste-filtre").appendChild(button);
+
+    // ajout des catégories dans le formulaire ( modale)
+    document.getElementById("categorie").appendChild(option);
 
     // ajouter addEventListener
     button.addEventListener("click", () => {
