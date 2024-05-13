@@ -150,7 +150,7 @@ document.getElementById("imageFile").addEventListener("change", function (e) {
   const file = e.target.files[0];
   console.log(file);
 
-  if (file.size < 4194304) {
+  if (file.size > 4194304) {
     alert("L'image est trop lourd, il doit être inférieur à 4mo max");
   } else {
     const preview = document.createElement("img");
