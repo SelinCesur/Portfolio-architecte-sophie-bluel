@@ -123,6 +123,9 @@ function jeSuisConnecte() {
     // afficher le mode edition et le bouton de modification
     document.getElementById("mode-edition").style = "display:block";
     document.getElementById("boutton-modifier").style = "display:block";
+
+    // masquer les filtres
+    document.querySelector(".liste-filtre").style = "display:none";
   } else {
     // afficher les boutons de navigation
     document.getElementById("logout").style = "display:none";
@@ -131,6 +134,9 @@ function jeSuisConnecte() {
     // masquer le mode edition et le bouton de modification
     document.getElementById("mode-edition").style = "display:none";
     document.getElementById("boutton-modifier").style = "display:none";
+
+    // afficher les filtres
+    document.querySelector(".liste-filtre").style = "display:flex";
   }
 }
 
