@@ -193,3 +193,11 @@ document
         "bouton-modal-formulaire";
     }
   });
+
+// je me déconnecte
+document.getElementById("logout").addEventListener("click", function (e) {
+  // j'efface tout dans le local storage
+  localStorage.clear();
+  // je vérifie si je suis connecté ou déconnecté
+  jeSuisConnecte();
+});

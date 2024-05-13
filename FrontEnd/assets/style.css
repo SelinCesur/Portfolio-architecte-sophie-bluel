@@ -177,6 +177,9 @@ nav ul {
 nav li {
   padding: 0 10px;
   font-size: 1.2em;
+
+  /* je rajoute le pointer de la souris pour le clic */
+  cursor: pointer;
 }
 
 li:hover {
